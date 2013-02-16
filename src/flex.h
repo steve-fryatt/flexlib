@@ -187,7 +187,6 @@ int flex_init(char *program_name, int *error_fd, int dynamic_size);
  */
 
 void flex_save_heap_info(char * filename);
-void flex_dump_heap(char *filename);
 
 /* ---------------------------- flex_compact ------------------------------
  * Description:   Compacts the flex heap

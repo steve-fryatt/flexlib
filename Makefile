@@ -49,6 +49,7 @@ LIBHDR := flex.h
 # Set up the various build directories.
 
 SRCDIR := src
+OBJDIR := obj
 OUTDIR := build
 
 # Includes and libraries.
@@ -60,9 +61,16 @@ INCLUDES := -I$(GCCSDK_INSTALL_ENV)/include
 all: library
 library: $(OUTDIR)/$(LIBOBJ)
 
+$(OUTDIR)/$(LIBOBJ): $(OBJDIR) $(OBJDIR)/flex.o
+	$(AR) -rcuv $(OUTDIR)/$(LIBOBJ) $(OBJDIR)/flex.o
 
-$(OUTDIR)/$(LIBOBJ): $(SRCDIR)/flex.h $(SRCDIR)/opts.h $(SRCDIR)/swiextra.h $(SRCDIR)/flex.c
-	$(CC) $(CCFLAGS) $(INCLUDES) -o $(OUTDIR)/$(LIBOBJ) -c $(SRCDIR)/flex.c
+# Create a folder to hold the object files.
+
+$(OBJDIR):
+	$(MKDIR) $(OBJDIR)
+
+$(OBJDIR)/flex.o: $(SRCDIR)/flex.h $(SRCDIR)/opts.h $(SRCDIR)/swiextra.h $(SRCDIR)/flex.c
+	$(CC) $(CCFLAGS) $(INCLUDES) -o $(OBJDIR)/flex.o -c $(SRCDIR)/flex.c
 
 
 # Install the finished version in the GCCSDK, ready for use.

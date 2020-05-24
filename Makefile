@@ -30,7 +30,7 @@
 # Build Tools
 
 CC := $(wildcard $(GCCSDK_INSTALL_CROSSBIN)/*gcc)
-AR := $(wildcard $(GCCSDK_INSTALL_CROSSBIN)/*ar)
+AR := $(wildcard $(GCCSDK_INSTALL_CROSSBIN)/*riscos-ar)
 MKDIR := mkdir
 RM := rm -rf
 CP := cp

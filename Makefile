@@ -30,7 +30,7 @@ AR := $(wildcard $(GCCSDK_INSTALL_CROSSBIN)/*riscos-ar)
 MKDIR := mkdir -p
 RM := rm -rf
 CP := cp
-INSTALL := install
+INSTALL := $(GCCSDK_INSTALL_ENV)/ro-install
 
 # Build Flags
 
@@ -74,8 +74,8 @@ $(OBJDIR)/flex.o: $(SRCDIR)/flex.h $(SRCDIR)/opts.h $(SRCDIR)/swiextra.h $(SRCDI
 install: clean all
 	$(RM) $(GCCSDK_INSTALL_ENV)/lib/$(LIBOBJ)
 	$(RM) $(GCCSDK_INSTALL_ENV)/include/$(LIBHDR)
-	$(INSTALL) -t $(GCCSDK_INSTALL_ENV)/lib $(OUTDIR)/$(LIBOBJ)
-	$(INSTALL) -t $(GCCSDK_INSTALL_ENV)/include $(SRCDIR)/$(LIBHDR)
+	$(INSTALL) $(OUTDIR)/$(LIBOBJ) $(GCCSDK_INSTALL_ENV)/lib
+	$(INSTALL) $(SRCDIR)/$(LIBHDR) $(GCCSDK_INSTALL_ENV)/include
 
 
 # Clean targets

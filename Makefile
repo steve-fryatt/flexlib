@@ -1,26 +1,22 @@
-# Copyright 2009-2012, Stephen Fryatt
+# Copyright 2009-2020, Stephen Fryatt
 #
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#     http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# 
+
 # This file is for building Acorn's FlexLib using
 # the GCCSDK.
 #
-#   http://www.stevefryatt.org.uk/software/
-#
-# Licensed under the EUPL, Version 1.1 only (the "Licence");
-# You may not use this work except in compliance with the
-# Licence.
-#
-# You may obtain a copy of the Licence at:
-#
-#   http://joinup.ec.europa.eu/software/page/eupl
-#
-# Unless required by applicable law or agreed to in
-# writing, software distributed under the Licence is
-# distributed on an "AS IS" basis, WITHOUT WARRANTIES
-# OR CONDITIONS OF ANY KIND, either express or implied.
-#
-# See the Licence for the specific language governing
-# permissions and limitations under the Licence.
-
 # This file really needs to be run by GNUMake.
 # It is intended for native compilation on Linux (for use in a GCCSDK
 # environment) or cross-compilation under the GCCSDK.
@@ -31,7 +27,7 @@
 
 CC := $(wildcard $(GCCSDK_INSTALL_CROSSBIN)/*gcc)
 AR := $(wildcard $(GCCSDK_INSTALL_CROSSBIN)/*riscos-ar)
-MKDIR := mkdir
+MKDIR := mkdir -p
 RM := rm -rf
 CP := cp
 INSTALL := install
@@ -93,4 +89,3 @@ clean:
 backup:
 	$(RM) ../$(BUZIPFILE)
 	$(ZIP) $(BUZIPFLAGS) ../$(BUZIPFILE) *
-

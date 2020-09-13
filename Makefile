@@ -57,8 +57,11 @@ INCLUDES := -I$(GCCSDK_INSTALL_ENV)/include
 all: library
 library: $(OUTDIR)/$(LIBOBJ)
 
-$(OUTDIR)/$(LIBOBJ): $(OBJDIR) $(OBJDIR)/flex.o
+$(OUTDIR)/$(LIBOBJ): $(OBJDIR) $(OBJDIR)/flex.o $(OUTDIR)
 	$(AR) -rcuv $(OUTDIR)/$(LIBOBJ) $(OBJDIR)/flex.o
+
+$(OUTDIR):
+	$(MKDIR) $(OUTDIR)
 
 # Create a folder to hold the object files.
 
